@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 
-const Login = (handleLogin) => {
+const Login = ({handleLogin}) => {
   
    const [email,setEmail] = useState(' ')
    const [password,setpassword] = useState(' ')
   const submitHandler =(e)=>{
     e.preventDefault()
     handleLogin(email,password)
-    setEmail(" ")
-    setpassword(" ")
+    setEmail("")
+    setpassword("")
   }
   return (
     <div className='flex h-screen w-screen items-center justify-center bg-black'>
@@ -39,7 +39,7 @@ const Login = (handleLogin) => {
 }
 
 export default Login
-function handleLogin(email, password) {
+function  handleLogin(email , password) {
   throw new Error('Function not implemented.')
 }
 
