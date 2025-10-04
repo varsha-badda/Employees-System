@@ -1,6 +1,7 @@
 const employees = [
   {
     "id": 1,
+    "firstName": "Aarav",
     "email": "employee1@example.com",
     "password": "123",
     "tasks": [
@@ -37,10 +38,17 @@ const employees = [
         "date": "2025-09-15",
         "category": "Meetings"
       }
-    ]
+    ],
+    "taskCount": {
+      "active": 1,
+      "new": 1,
+      "completed": 2,
+      "failed": 0
+    }
   },
   {
     "id": 2,
+    "firstName": "Diya",
     "email": "employee2@example.com",
     "password": "123",
     "tasks": [
@@ -88,10 +96,17 @@ const employees = [
         "date": "2025-09-13",
         "category": "Development"
       }
-    ]
+    ],
+    "taskCount": {
+      "active": 2,
+      "new": 1,
+      "completed": 1,
+      "failed": 1
+    }
   },
   {
     "id": 3,
+    "firstName": "Rohan",
     "email": "employee3@example.com",
     "password": "123",
     "tasks": [
@@ -161,10 +176,17 @@ const employees = [
         "date": "2025-09-22",
         "category": "HR"
       }
-    ]
+    ],
+    "taskCount": {
+      "active": 3,
+      "new": 2,
+      "completed": 2,
+      "failed": 1
+    }
   },
   {
     "id": 4,
+    "firstName": "Meera",
     "email": "employee4@example.com",
     "password": "123",
     "tasks": [
@@ -201,10 +223,17 @@ const employees = [
         "date": "2025-09-11",
         "category": "Customer Support"
       }
-    ]
+    ],
+    "taskCount": {
+      "active": 2,
+      "new": 2,
+      "completed": 0,
+      "failed": 1
+    }
   },
   {
     "id": 5,
+    "firstName": "Kabir",
     "email": "employee5@example.com",
     "password": "123",
     "tasks": [
@@ -285,7 +314,13 @@ const employees = [
         "date": "2025-09-07",
         "category": "Communications"
       }
-    ]
+    ],
+    "taskCount": {
+      "active": 4,
+      "new": 2,
+      "completed": 2,
+      "failed": 1
+    }
   }
 ];
 
@@ -294,6 +329,9 @@ const admin = [{
   "email": "admin@example.com",
   "password": "123"
 }];
+
+
+
 
 export const setLocalStorage = () => {
   localStorage.setItem('Employees', JSON.stringify(employees));
