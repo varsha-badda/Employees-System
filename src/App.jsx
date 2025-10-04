@@ -18,7 +18,7 @@ const App = () => {
 
   useEffect(()=>{
     if(authData){
-      const loggedInUser = localStorage.getItem("loggedUser")
+      const loggedInUser = localStorage.getItem("loggedInUser")
       if(loggedInUser){
         setUser(loggedInUser)
       }
@@ -32,11 +32,10 @@ const App = () => {
       localStorage.setItem('loggedInUser',JSON.stringify({role:'admin'}))
       
     }
-    else if(authData ){
-      const employee = authData.employees.find((e)=>e.email && e.password == password)
+    else if(authData){
+      const employee = authData.employees.find((e) => e.email === email && e.password === password)
       if(employee){
-
-        setUser('employee')
+        setUser('employees')
         localStorage.setItem('loggedInUser',JSON.stringify({role:'employee'}))
       }
       
