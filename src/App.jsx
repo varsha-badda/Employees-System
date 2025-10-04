@@ -13,11 +13,15 @@ const App = () => {
     getLocalStorage()
   },)*/
   const[user,setUser] = useState(null)
+  const [loggedInUser,setLoggedInUser] = useState(null)
   const authData = useContext(AuthContext)
 
   useEffect(()=>{
     if(authData){
       const loggedInUser = localStorage.getItem("loggedUser")
+      if(loggedInUser){
+        setUser(loggedInUser)
+      }
 
     }
   },[authData]);
@@ -28,9 +32,14 @@ const App = () => {
       localStorage.setItem('loggedInUser',JSON.stringify({role:'admin'}))
       
     }
-    else if(authData && authData.employees.find((e)=>e.email && e.password == password)){
-      setUser('employee')
-      ocalStorage.setItem('loggedInUser',JSON.stringify({role:'employee'}))
+    else if(authData ){
+      const employee = authData.employees.find((e)=>e.email && e.password == password)
+      if(employee){
+
+        setUser('employee')
+        localStorage.setItem('loggedInUser',JSON.stringify({role:'employee'}))
+      }
+      
       
     }
     else{
@@ -43,8 +52,7 @@ const App = () => {
   return (
    <>
    {!user ? <Login handleLogin={handleLogin} />: ' '}
-   {user == 'admin' ? <AdminDashboard/> : <EmployeeDashboard/>}
-   
+   {user == 'admin' ? <AdminDashboard/> : (user == 'employees' ? <EmployeeDashboard data={loggedInUser} />: null ) }
    </>
   )
 }
