@@ -16,7 +16,7 @@ const App = () => {
   const [loggedInUser,setLoggedInUser] = useState(null)
   const authData = useContext(AuthContext)
 
-  useEffect(()=>{
+ /* useEffect(()=>{
     if(authData){
       const loggedInUser = localStorage.getItem("loggedInUser")
       if(loggedInUser){
@@ -24,7 +24,7 @@ const App = () => {
       }
 
     }
-  },[authData]);
+  },[authData]);*/
   
   const handleLogin = (email,password)=>{
     if(email == 'admin@me.com' && password == '123'){
@@ -35,11 +35,10 @@ const App = () => {
     else if(authData){
       const employee = authData.employees.find((e) => e.email === email && e.password === password)
       if(employee){
-        setUser('employees')
+        setUser('employee')
+        setLoggedInUser(employee)
         localStorage.setItem('loggedInUser',JSON.stringify({role:'employee'}))
       }
-      
-      
     }
     else{
       alert("Invalid Credentials")
@@ -51,10 +50,9 @@ const App = () => {
   return (
    <>
    {!user ? <Login handleLogin={handleLogin} />: ' '}
-   {user == 'admin' ? <AdminDashboard/> : (user == 'employees' ? <EmployeeDashboard data={loggedInUser} />: null ) }
+   {user == 'admin' ? <AdminDashboard data={authData}/> : (user == 'employee' ? <EmployeeDashboard data={loggedInUser} />: null ) }
    </>
   )
 }
 
 export default App
-
