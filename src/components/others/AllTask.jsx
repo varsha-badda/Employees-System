@@ -14,13 +14,13 @@ const AllTask = () => {
             <h5 className='w-1/5 '>Failed</h5>
         </div>
        <div className = 'h-[95%] overflow-auto'>
-         {authData.employees.map(function(elem){
-            return <div className='bg-black py-2 px-4 flex justify-between rounded'>
+         {authData.employees.map(function(elem,idx){
+            return <div key={idx} className='bg-black border-2 border--600 py-2 px-4 flex justify-between rounded'>
             <h2 className='w-1/5 text-white '>{elem.firstName}</h2>
-            <h3 className='w-1/5 text-'>Task</h3>
-            <h5 className='w-1/5 text-white'>Status</h5>
-            <h5 className='w-1/5 text-white'>Status</h5>
-            <h5 className='w-1/5 text-red-700'>Failed</h5>
+            <h3 className='w-1/5 text-white'>{elem.taskCount.new}</h3>
+            <h5 className='w-1/5 text-white'>{elem.taskCount.active}</h5>
+            <h5 className='w-1/5 text-white'>{elem.taskCount.completed}</h5>
+            <h5 className='w-1/5 text-red-700'>{elem.taskCount.failed}</h5>
         </div>
           })}
        </div>
