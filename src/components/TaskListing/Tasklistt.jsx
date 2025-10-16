@@ -18,7 +18,7 @@ const Tasklistt = ({data}) => {
         return <CompleteTask key={idx} data={elem}/>
       }
       if(elem.failed){
-        return <Failed key={idx} data={elem}/>
+        return <FailedTask key={idx} data={elem}/>
       }
     }
     ) }
